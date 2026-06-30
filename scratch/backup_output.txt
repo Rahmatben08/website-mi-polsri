@@ -1,0 +1,707 @@
+-- ====================================================
+-- Database Backup: Test
+-- Generated on: 2026-06-11 03:21:53
+-- ====================================================
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------------------------------
+-- Table structure for table `admin`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `admin`
+-- ----------------------------------------------------
+INSERT INTO `admin` (`id`, `username`, `password`, `created_at`) VALUES ('1', 'admin', '$2y$12$p8MejiGY7ezq1e6y1zcBPOapdxf8VMKdJ0yoOqnZdjBZr9nc7Djqe', '2026-05-21 08:17:28');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `berita`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `berita`;
+CREATE TABLE `berita` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `judul` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `konten` longtext NOT NULL,
+  `gambar` varchar(255) DEFAULT 'default-berita.jpg',
+  `kategori` enum('berita','artikel') DEFAULT 'berita',
+  `status` enum('publish','draft') DEFAULT 'publish',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `berita`
+-- ----------------------------------------------------
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('1', 'Mahasiswa MI Polsri Raih Juara 1 Hackathon Nasional 2025', 'mahasiswa-mi-polsri-raih-juara-1-hackathon-nasional-2025', '<p>Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya berhasil menorehkan prestasi gemilang dengan meraih <strong>Juara 1 Hackathon Nasional 2025</strong> yang diselenggarakan oleh Kementerian Komunikasi dan Informatika Republik Indonesia.</p><p>Tim yang terdiri dari tiga mahasiswa semester 6 ini berhasil mengalahkan lebih dari 200 tim peserta dari seluruh Indonesia dengan menghadirkan solusi inovatif berbasis kecerdasan buatan untuk sistem monitoring kesehatan masyarakat.</p><p>Ketua Jurusan MI Polsri, Ir. Sony Oktapriandi, S.Kom., M.Kom., menyampaikan rasa bangga dan apresiasinya. Para pemenang mendapatkan hadiah Rp 50 juta dan kesempatan program inkubasi bisnis teknologi.</p>', 'berita1.jpg', 'berita', 'publish', '2026-05-21 08:17:28', '2026-05-21 08:17:28');
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('2', 'Workshop Pengembangan Aplikasi Mobile Berbasis Flutter 2025', 'workshop-pengembangan-aplikasi-mobile-berbasis-flutter-2025', '<p>Jurusan Manajemen Informatika Polsri sukses menyelenggarakan <strong>Workshop Pengembangan Aplikasi Mobile Berbasis Flutter</strong> yang berlangsung selama dua hari pada 15-16 Mei 2025.</p><p>Workshop ini diikuti oleh lebih dari 150 mahasiswa aktif dari berbagai semester dan dibimbing langsung oleh praktisi industri berpengalaman dari perusahaan teknologi ternama di Palembang.</p><p>Peserta mendapatkan materi komprehensif mulai dari dasar-dasar Flutter, pengelolaan state management, integrasi API, hingga deployment ke Google Play Store.</p>', 'berita2.jpg', 'berita', 'publish', '2026-05-21 08:17:28', '2026-05-21 08:17:28');
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('3', 'Revolusi AI dalam Dunia Bisnis: Peluang dan Tantangan', 'revolusi-ai-dalam-dunia-bisnis-peluang-dan-tantangan', '<p>Kecerdasan buatan (AI) telah mengubah lanskap bisnis secara fundamental. Teknologi ini tidak lagi sekadar alat bantu, melainkan telah menjadi inti strategi bisnis perusahaan terkemuka di seluruh dunia.</p><p><strong>Peluang yang Ditawarkan AI:</strong></p><ul><li>Automatisasi proses bisnis yang repetitif</li><li>Analisis data besar (Big Data) secara real-time</li><li>Personalisasi layanan pelanggan secara masif</li><li>Prediksi tren pasar dengan akurasi tinggi</li></ul><p>Namun tantangan terkait keamanan data, etika penggunaan AI, dan transformasi tenaga kerja tetap harus dihadapi secara bijak.</p>', 'artikel1.jpg', 'artikel', 'publish', '2026-05-21 08:17:28', '2026-05-21 08:17:28');
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('4', 'Tren Teknologi Web 2025: Apa yang Harus Dipelajari Developer?', 'tren-teknologi-web-2025-apa-yang-harus-dipelajari-developer', '<p>Dunia pengembangan web terus berevolusi. Memasuki 2025, beberapa teknologi baru mulai mendominasi industri.</p><p><strong>1. WebAssembly (WASM) Mainstream</strong> — Memungkinkan aplikasi web berjalan dengan performa mendekati native.</p><p><strong>2. Edge Computing & Serverless</strong> — Platform seperti Cloudflare Workers memungkinkan latensi jauh lebih rendah.</p><p><strong>3. AI-Augmented Development</strong> — Tools seperti GitHub Copilot mengubah cara developer bekerja. Kolaborasi efektif dengan AI menjadi skill yang wajib dikuasai setiap developer modern.</p>', 'artikel2.jpg', 'artikel', 'publish', '2026-05-21 08:17:28', '2026-05-21 08:17:28');
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('5', 'Pengumuman Persiapan Ujian Akhir Semester (UAS) Semester Genap TA 2025/2026', '2026-06-04-pengumuman-persiapan-ujian-akhir-semester-uas-semester-genap-ta-20252026', '<p>Nomor: 1283/PL6.1.25/LL/2026<br>Perihal: Persiapan Ujian Akhir Semester (UAS) Semester Genap Tahun Akademik 2025/2026</p><p>&nbsp;</p><p>Dalam rangka pelaksanaan Ujian Akhir Semester (UAS) Semester Genap Tahun Akademik 2025/2026, disampaikan beberapa hal sebagai berikut:</p><ol><li><p>Mahasiswa wajib memastikan bahwa tidak ada tunggakan <strong>UKT dan UKT semester berjalan telah lunas</strong> sesuai ketentuan yang berlaku. Mahasiswa yang belum menyelesaikan kewajiban administrasi akademik agar segera melakukan pembayaran dan berkoordinasi dengan pihak terkait atau tidak bisa mengikuti UAS / Ujian Tugas Akhir/Laporan Akhir.</p></li><li><p>Mahasiswa diharapkan memastikan seluruh kewajiban akademik telah diselesaikan sebelum pelaksanaan UAS.</p></li><li><p>Jadwal UAS mengikuti jadwal KBM yang telah berjalan.</p></li><li><p>Mahasiswa diwajibkan membawa identitas diri (KTM/KTP) dan perlengkapan ujian yang diperlukan.</p></li><li><p>Mahasiswa yang sedang menempuh Tugas Akhir/Laporan Akhir maupun Kerja Praktik agar segera menyelesaikan proses bimbingan dan berkoordinasi dengan dosen pembimbing terkait penilaian bimbingan.</p></li><li><p>Mahasiswa diharapkan menjaga integritas akademik selama pelaksanaan UAS. Segala bentuk kecurangan, plagiarisme, maupun pelanggaran tata tertib ujian akan dikenakan sanksi sesuai peraturan akademik yang berlaku.</p></li><li><p>Pelaksanaan UAS tanggal 15 - 19 Juni 2026</p></li><li><p>Untuk mahasiswa Sarjana Terapan yang telah menyelesaikan Kerja Praktek (KP), untuk segera mengumpulkan nilai dari dosen pembimbing perusahaan.</p></li><li><p>Sehubungan dengan adanya Ujian Masuk Mandiri yang diadakah di Lab Komputer MI, maka untuk perkuliahan tanggal <strong>6 - 9 Juni 2026</strong> dilaksanakan secara <em>daring. </em>Untuk KBM hari <strong>Jumat, 5 Juni 2026</strong>, MK praktikum dilaksanakan secara <em>daring</em>, sedangkan teori <em>luring</em></p></li></ol><p>Informasi lebih lanjut terkait jadwal dan tata tertib pelaksanaan UAS akan disampaikan melalui Program Studi masing-masing.</p><p>&nbsp;</p><p>Palembang,     Juni 2026<br>Ketua Jurusan Manajemen Informatika </p><p> dto</p><p>Ir. Sony Oktapriandi, M.Kom<br>NIP 197510272008121001</p>', 'berita_uas.jpg', 'berita', 'publish', '2026-06-04 11:56:08', '2026-06-08 13:10:44');
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('6', 'Pengumpulan Berkas Magang', '2026-05-23-pengumpulan-berkas-magang', '<p>Bagi Mahasiswa Diploma 3 angkatan 2024 yg sudah mendapat surat jawaban izin magang dari perusahaan tujuan, silahkan upload berkas di link GForm berikut:</p><p><code>https://s.id/BerkasMagangMI </code></p>', 'berita_magang.jpg', 'berita', 'publish', '2026-05-23 04:16:30', '2026-06-08 13:10:44');
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('7', 'Ujian Program/Aplikasi Mahasiswa D3 & D4', '2026-05-13-pelaksanaan-ujian-programaplikasi-mahasiswa-d3--d4', '<p>Diberitahukan kepada seluruh mahasiswa tingkat akhir Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya Semester Genap Tahun Akademik 2025/2026 semester 8 (Sarjana Terapan) & semester 6 (Diploma), bahwa akan dilaksanakan kegiatan <strong>Ujian Program/Aplikasi</strong> sebagai bagian dari rangkaian proses penyelesaian Laporan/Tugas Akhir.</p><p>Pelaksanaan ujian dilakukan secara <strong>terjadwal dan paralel</strong> dengan melibatkan tim penguji dari laboratorium dan dosen terkait. Sistem ini diharapkan dapat menjaga efektivitas pelaksanaan ujian, pemerataan peserta, serta kualitas proses penilaian.</p><p>Ujian Program/Aplikasi bertujuan untuk mengukur:</p><ul><li><p>Penguasaan sistem/aplikasi yang dikembangkan</p></li><li><p>Pemahaman logika dan alur sistem</p></li><li><p>Kemampuan implementasi dan modifikasi program</p></li><li><p>Kemampuan mahasiswa dalam menjelaskan aplikasi secara teknis</p></li></ul><p>Ketentuan Revisi Hasil Ujian Program / Aplikasi:</p><ul><li><p>Revisi Ringan : Perbaikan tampilan, validasi input, atau penyesuaian minor lainnya</p></li><li><p>Revisi Sedang : Perubahan alur proses, penambahan fitur terbatas, atau penyempurnaan logika sistem</p></li><li><p>Revisi Berat : Perbaikan mendasar yang mempengaruhi struktur sistem, fungsi utama aplikasi, atau ketidakmampuan mahasiswa dalam menjelaskan dan/atau memodifikasi sistem saat ujian</p></li></ul><p>Mekanisme Penyelesaian Revisi:</p><ul><li><p>Melakukan perbaikan sesuai catatan penguji</p></li><li><p>Menyerahkan hasil revisi kepada dosen pembimbing disertai bukti perubahan</p></li></ul><p>Validasi Revisi:</p><ul><li><p>Revisi ringan dan sedang : diverifikasi oleh dosen pembimbing</p></li><li><p>Revisi berat : wajib dilakukan validasi ulang oleh penguji melalui ujian ulang terbatas (mini test)</p></li></ul><p>Hasil revisi dinyatakan sah apabila:</p><ul><li><p>Telah diverifikasi dan disetujui oleh dosen pembimbing</p></li><li><p>Telah lulus validasi ulang oleh penguji</p></li><li><p>Tanpa adanya validasi tersebut, mahasiswa dianggap belum menyelesaikan kewajiban ujian program/aplikasi</p></li></ul><p>Ketentuan Ujian Ulang</p><ul><li><p>Ujian ulang hanya diberlakukan untuk mahasiswa dengan: (1) Revisi kategori berat, atau (2) yang dinilai belum menguasai sistem saat ujian</p></li></ul><p>Batas Waktu Revisi</p><ul><li><p>Mahasiswa wajib menyelesaikan revisi dalam waktu maksimal <strong>(3–5) hari kerja</strong> sejak tanggal pelaksanaan ujian</p></li><li><p>Mahasiswa yang tidak menyelesaikan revisi dalam batas waktu yang ditentukan: (1) Dianggap <strong>belum memenuhi syarat kelulusan ujian program/aplikasi, </strong>(2) Diwajibkan mengikuti ujian ulang pada periode berikutnya</p></li></ul><p>Form Pendaftaran:</p><p><code>https://forms.gle/KRa4TwWXqD6FkefN8 </code></p><p>Pelaksanaan:</p><ul><li><p>10 - 13 Juni 2026</p></li><li><p>Ruangan Aula</p></li></ul><p>&nbsp;</p>', 'berita_ujian.jpg', 'berita', 'publish', '2026-05-13 08:54:19', '2026-06-08 13:10:44');
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('8', 'Uji Kompetensi Mahasiswa Sarjana Terapan', '2026-05-12-uji-kompetensi-mahasiswa-sarjana-terapan', '<p>Kepada mahasiswa Program Studi <strong>Sarjana Terapan Manajemen Informatika</strong> bahwa akan dilaksanakan kegiatan <strong>Uji Kompetensi (Ujikom)</strong> sebagai bagian dari penguatan capaian kompetensi mahasiswa dan kesiapan lulusan menghadapi dunia kerja serta industri.</p><p>Perlu disampaikan bahwa biaya pelaksanaan Ujikom telah termasuk dalam UKT mahasiswa, sehingga mahasiswa tidak dikenakan biaya tambahan untuk mengikuti kegiatan ini. Kesempatan ini sangat penting karena apabila mengikuti sertifikasi/uji kompetensi secara mandiri di luar kampus, peserta umumnya dikenakan biaya tersendiri.</p><p>Melalui pelaksanaan Ujikom ini, mahasiswa yang dinyatakan kompeten nantinya akan memperoleh <strong>Sertifikat Kompetensi BNSP (Badan Nasional Sertifikasi Profesi)</strong> sesuai skema yang diikuti. Sertifikat BNSP tersebut dapat menjadi nilai tambah dalam proses rekrutmen kerja, penguatan portofolio profesional, serta pengakuan kompetensi sesuai standar nasional.</p><p>Seluruh mahasiswa Sarjana Terapan Manajemen Informatika dipersiapkan untuk mengikuti pelaksanaan Ujikom sesuai dengan jadwal, sesi, dan ketentuan yang ditetapkan oleh program studi. Mahasiswa diminta untuk melakukan pendaftaran melalui tautan di bawah ini.</p><p><strong>Tahap Pendaftaran & Pelaksanaan</strong></p><p>Peserta melakukan pengisian data diri melalui portal resmi LSP Polsri pada laman berikut: <u><a href=\"#\" target=\"_blank\" rel=\"noopener\">https://lsp.polsri.ac.id/pendaftaran</a></u>. Batas akhir pendaftaran online: <strong>17 Mei 2026</strong>.</p><p>Untuk jenjang D4 Manajemen Informatika, pilihan skema yang dibuka yaitu: <a href=\"#\" target=\"_blank\" rel=\"noopener\">Skema Junior Web Programmer</a> & <a href=\"#\" target=\"_blank\" rel=\"noopener\">Skema System Analyst.</a></p><p><strong>Tahap Penyerahan Berkas Fisik (Hardcopy)</strong></p><p>Peserta menyerahkan berkas fisik berupa:</p><ol><li><p>Formulir APL-01 yang telah diisi lengkap. Form dapat diunduh pada link dibawah ini<br><code>https://drive.google.com/drive/folders/1pvggz6DFS3WHzWQQUh1nufuysPkUOEsO?usp=sharing</code></p><p>(<em>diisi menggunakan huruf kapital, tinta hitam, tanpa coretan, dan ditandatangani</em>)</p></li><li><p>Pas foto terbaru background merah ukuran 3x4 sebanyak 2 lembar</p></li><li><p>Fotokopi KTP</p></li><li><p>Fotokopi KTM</p></li><li><p>KHS Semester 1–7 (lengkap)</p></li><li><p>Sertifikat Magang atau dokumen pendukung lainnya</p></li></ol><p>Seluruh berkas diserahkan kepada LSP melalui Admin TUK (<strong>Ibu Riska</strong>) dalam kondisi lengkap. Batas akhir berkas diterima: <strong>20 Mei 2026 pukul 14.00 WIB.</strong></p><p>Pengiriman berkas ke LSP dilakukan secara bertahap, sehingga mahasiswa sangat disarankan untuk mengumpulkan berkas lebih awal agar proses verifikasi dapat segera dilakukan. Jangan menunggu batas akhir pengumpulan.</p><p><strong>Petunjuk Pendaftaran</strong></p><p>Tata cara pengisian APL-01 terdapat pada tautan berikut:<br><code>https://drive.google.com/file/d/1p_XbG0g5bQgN7ho0WKSZrbiIYGv_Ucka/view?usp=sharing </code></p><p><strong>Informasi Pelaksanaan Ujikom</strong></p><p>Hari/Tanggal Pelaksanaan : <strong>10 – 12 Juni 2026</strong><br>Waktu                             : 08.00 s.d selesai<br>Tempat                           : Laboratorium Komputer Manajemen Informatika</p><p>Informasi pembagian sesi, teknis pelaksanaan, serta ketentuan lainnya akan diumumkan lebih lanjut melalui <em>WAG</em> & Website Jurusan.</p><p>Mahasiswa yang tidak mengikuti tahapan pendaftaran dan pelaksanaan Ujikom berarti tidak memanfaatkan fasilitas kompetensi yang telah disediakan melalui pembiayaan UKT serta kehilangan kesempatan memperoleh sertifikasi kompetensi tanpa biaya tambahan dari kampus.</p><p>Demikian pengumuman ini disampaikan untuk menjadi perhatian seluruh mahasiswa.</p>', 'berita_ujikom.jpg', 'berita', 'publish', '2026-05-12 06:59:28', '2026-06-08 13:10:44');
+INSERT INTO `berita` (`id`, `judul`, `slug`, `konten`, `gambar`, `kategori`, `status`, `created_at`, `updated_at`) VALUES ('9', 'Dosen Manajemen Informatika Ikuti Pelatihan Asesor Kompetensi BNSP guna Tingkatkan Kualitas Pendidikan Vokasi', 'dosen-manajemen-informatika-ikuti-pelatihan-asesor-kompetensi-bnsp-guna-tingkatkan-kualitas-pendidikan-vokasi', '<p><strong>PALEMBANG</strong> – Sejumlah dosen dari Program Studi Manajemen Informatika (MI) mengikuti Pelatihan Calon Asesor Kompetensi yang diselenggarakan oleh Lembaga Sertifikasi Profesi (LSP) Politeknik Negeri Sriwijaya (Polsri). Pelatihan intensif selama lima hari ini dilaksanakan di Hotel Batiqa, Palembang.</p><p>Pelatihan ini bertujuan untuk mencetak asesor-asesor baru yang tersertifikasi secara nasional oleh Badan Nasional Sertifikasi Profesi (BNSP). Keikutsertaan dosen MI dalam kegiatan ini merupakan langkah strategis untuk memperkuat ekosistem pendidikan vokasi, memastikan lulusan memiliki kompetensi yang selaras dengan kebutuhan industri.</p><p>Selama pelatihan, peserta dibekali dengan materi regulasi sistem sertifikasi nasional, pengembangan perangkat asesmen, dan metode uji kompetensi. Setelah lulus asesmen, para dosen ini akan memiliki wewenang untuk melakukan uji kompetensi bagi mahasiswa, khususnya di bawah naungan LSP Polsri, guna meningkatkan mutu dan kredibilitas lulusan.</p>', 'berita_asesor.jpg', 'berita', 'publish', '2026-04-28 08:37:21', '2026-06-08 13:10:44');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `dokumen`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `dokumen`;
+CREATE TABLE `dokumen` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) NOT NULL,
+  `deskripsi` text,
+  `file_name` varchar(255) NOT NULL,
+  `kategori` varchar(100) DEFAULT 'Umum',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `dokumen`
+-- ----------------------------------------------------
+INSERT INTO `dokumen` (`id`, `nama`, `deskripsi`, `file_name`, `kategori`, `created_at`) VALUES ('1', 'Formulir Pengisian PKL (Format Word)', 'Template resmi formulir pendaftaran Praktik Kerja Lapangan mahasiswa MI Polsri.', 'form_pkl_template.docx', 'PKL', '2026-06-11 10:13:20');
+INSERT INTO `dokumen` (`id`, `nama`, `deskripsi`, `file_name`, `kategori`, `created_at`) VALUES ('2', 'Buku Panduan Laporan Akhir (PDF)', 'Buku panduan lengkap penulisan Laporan Akhir D3 / Tugas Akhir D4 Manajemen Informatika.', 'panduan_la_2026.pdf', 'Laporan Akhir', '2026-06-11 10:13:20');
+INSERT INTO `dokumen` (`id`, `nama`, `deskripsi`, `file_name`, `kategori`, `created_at`) VALUES ('3', 'Formulir Bebas Pustaka Jurusan', 'Surat keterangan bebas peminjaman perpustakaan tingkat jurusan sebagai syarat yudisium.', 'bebas_pustaka_mi.docx', 'Kelulusan', '2026-06-11 10:13:20');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `dosen`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `dosen`;
+CREATE TABLE `dosen` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nama` varchar(150) NOT NULL,
+  `foto` varchar(255) DEFAULT 'default-dosen.jpg',
+  `bidang_keahlian` varchar(200) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `nidn` varchar(20) DEFAULT NULL,
+  `nip` varchar(30) DEFAULT NULL,
+  `jabatan` varchar(100) DEFAULT 'Dosen',
+  `prodi` enum('d3','d4','keduanya') DEFAULT 'd3',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `dosen`
+-- ----------------------------------------------------
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('1', 'Ir. Sony Oktapriandi, S.Kom., M.Kom.', 'sony-oktapriandi.png', 'Sistem Informasi & Manajemen TI', 'sony@polsri.ac.id', '0027107512', '197510272008121000', 'Ketua Jurusan', 'keduanya', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('2', 'Leni Novianti, S.Kom, M.Kom', 'leni-novianti.png', 'Rekayasa Perangkat Lunak & Basis Data', 'leni@polsri.ac.id', '0031107701', '197710312002122003', 'Dosen Senior', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('3', 'Meivi Kusnandar, S.Kom., M.Kom', 'meivi-kusnandar.png', 'Pemrograman & Rekayasa Sistem', 'meivi@polsri.ac.id', '0001077405', '197407052002121020', 'Dosen Senior', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('4', 'Rika Sadariawati, S.E., M.Si', 'rika-sadariawati.png', 'Manajemen Bisnis & E-Commerce', 'rika@polsri.ac.id', '0023027303', '197302232002122020', 'Dosen', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('5', 'Desi Apriyanty, S.E., M.Si', 'desi-apriyanty.png', 'Ekonomi & Manajemen Informatika', 'desi@polsri.ac.id', '0029047303', '197304292005012000', 'Dosen', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('6', 'Dr. Hetty Meileni, S.Kom., M.T.', 'hetty-meileni.png', 'Sistem Informasi & Komputasi', 'hetty@polsri.ac.id', '0014057906', '197905142008122020', 'Dosen Senior', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('7', 'Dr. Indri Ariyanti, S.E., M.Si', 'indri-ariyanti.png', 'Manajemen Strategis & Kewirausahaan Digital', 'indri@polsri.ac.id', '0003067305', '197306032008012008', 'Dosen Senior', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('8', 'Nita Novita, S.E., M.M.', 'nita-novita.png', 'Manajemen & Bisnis Digital', 'nita@polsri.ac.id', '0023117410', '197411232008012000', 'Dosen', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('9', 'Muhammad Aris Ganiardi, S.Si., M.T.', 'aris-ganiardi.png', 'Matematika Komputasi & Statistika', 'aris@polsri.ac.id', '0214018101', '198101142012121000', 'Dosen', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('10', 'Andre Mariza Putra, S.Kom., M.Kom', 'andre-mariza.png', 'Pengembangan Aplikasi & Cloud Computing', 'andre@polsri.ac.id', '1008038803', '198803082019031000', 'Dosen', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('11', 'Ayu Octarina, S.Pd., M.Pd', 'ayu-octarina.png', 'Pendidikan Vokasi & Bahasa Inggris Profesional', 'ayu@polsri.ac.id', '0009109005', '199010092019092000', 'Dosen', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('12', 'Febie Elfaladonna, S.Kom., M.Kom', 'febie-elfaladonna.png', 'Sistem Informasi & Analisis Data', 'febie@polsri.ac.id', '0422029401', '199402222019032030', 'Dosen', 'd4', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('13', 'Ridwan Effendi, S.E., M.Si', 'ridwan-effendi.png', 'Akuntansi & Manajemen Keuangan', 'ridwan@polsri.ac.id', '0011036007', '196003111989031005', 'Dosen Senior', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('14', 'Ir. Zulkarnaini, M.T.', 'zulkarnaini.png', 'Teknik Informatika & Jaringan Komputer', 'zulkarnaini@polsri.ac.id', '0018096206', '196209181992031001', 'Dosen Senior', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('15', 'Indra Satriadi, S.T., M.Kom', 'indra-satriadi.png', 'Pemrograman Web & Mobile', 'indra@polsri.ac.id', '0016117202', '197211162000031000', 'Dosen Senior', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('16', 'Devi Sartika, S.Kom., M.AB', 'devi-sartika.png', 'Administrasi Bisnis & Sistem Informasi', 'devi@polsri.ac.id', '0011107702', '197710112001122002', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('17', 'Dewi Irmawati Siregar, S.Kom., M.Kom', 'dewi-irmawati.png', 'Rekayasa Sistem & Basis Data', 'dewi@polsri.ac.id', '0018097702', '197709182001122001', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('18', 'Deri Darfin, S.Sos., M.Si', 'deri-darfin.png', 'Sosiologi Digital & Komunikasi Organisasi', 'deri@polsri.ac.id', '0020117402', '197411202002121000', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('19', 'Ienda Meiriska, S.Kom., M.Kom', 'ienda-meiriska.png', 'Pemrograman & Rekayasa Perangkat Lunak', 'ienda@polsri.ac.id', '0017057907', '197905172002122020', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('20', 'Robinson, S.Kom., M.Kom', 'robinson.png', 'Keamanan Sistem & Jaringan Komputer', 'robinson@polsri.ac.id', '0017037503', '197503172002121000', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('21', 'Henny Madora, S.Kom., M.M.', 'henny-madora.png', 'Manajemen Informasi & Sistem ERP', 'henny@polsri.ac.id', '0027097701', '197709272005012000', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('22', 'Ida Wahyuningrum, S.E., M.Si', 'ida-wahyuningrum.png', 'Akuntansi Manajemen & Sistem Informasi Akuntansi', 'ida@polsri.ac.id', '0011108003', '198010112005012000', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('23', 'Muhammad Noval, S.E., M.Si', 'muhammad-noval.png', 'Ekonomi Manajerial & Kewirausahaan', 'noval@polsri.ac.id', '0008117502', '197511082005011003', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('24', 'Yusniarti, S.Kom., M.Kom', 'yusniarti.png', 'Sistem Informasi & Analisis Pemrograman', 'yusniarti@polsri.ac.id', '0021097902', '197909212005012000', 'Dosen', 'd3', '2026-05-21 08:17:28');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('33', 'Herlinda Kusmiati, S.Kom., M.Kom.', 'herlinda-kusmiati.png', 'Sistem Informasi & Tata Kelola TI', 'herlinda@polsri.ac.id', '0204098901', '198909042022032000', 'Koordinator Program Studi D4', 'd4', '2026-05-21 14:21:07');
+INSERT INTO `dosen` (`id`, `nama`, `foto`, `bidang_keahlian`, `email`, `nidn`, `nip`, `jabatan`, `prodi`, `created_at`) VALUES ('34', 'Ir. Sulistiyanto, S.Kom., M.T.I.', 'sulistiyanto.png', 'Sistem Informasi & Sistem Pakar', 'sulistiyanto@polsri.ac.id', '0223029301', '199302232022031000', 'Sekretaris Jurusan', 'd4', '2026-05-21 14:21:07');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `galeri`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `galeri`;
+CREATE TABLE `galeri` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `judul` varchar(255) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `deskripsi` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `galeri`
+-- ----------------------------------------------------
+INSERT INTO `galeri` (`id`, `judul`, `gambar`, `deskripsi`, `created_at`) VALUES ('1', 'Wisuda Mahasiswa MI 2024', 'galeri1.jpg', 'Momen bahagia wisuda mahasiswa Jurusan MI angkatan 2021', '2026-05-21 08:17:28');
+INSERT INTO `galeri` (`id`, `judul`, `gambar`, `deskripsi`, `created_at`) VALUES ('2', 'Seminar Nasional Teknologi Informasi', 'galeri2.jpg', 'Seminar nasional dengan pembicara dari industri teknologi terkemuka', '2026-05-21 08:17:28');
+INSERT INTO `galeri` (`id`, `judul`, `gambar`, `deskripsi`, `created_at`) VALUES ('3', 'Workshop Flutter Development', 'galeri3.jpg', 'Workshop intensif pengembangan aplikasi mobile menggunakan Flutter', '2026-05-21 08:17:28');
+INSERT INTO `galeri` (`id`, `judul`, `gambar`, `deskripsi`, `created_at`) VALUES ('4', 'PKL Mahasiswa di Perusahaan IT', 'galeri4.jpg', 'Mahasiswa MI melaksanakan PKL di berbagai perusahaan teknologi', '2026-05-21 08:17:28');
+INSERT INTO `galeri` (`id`, `judul`, `gambar`, `deskripsi`, `created_at`) VALUES ('5', 'Kompetisi Coding Antar Mahasiswa', 'galeri5.jpg', 'Ajang kompetisi coding untuk mengasah kemampuan pemrograman mahasiswa', '2026-05-21 08:17:28');
+INSERT INTO `galeri` (`id`, `judul`, `gambar`, `deskripsi`, `created_at`) VALUES ('6', 'Kegiatan HMJ Manajemen Informatika', 'galeri6.jpg', 'Berbagai kegiatan kemahasiswaan yang diorganisir oleh HMJ MI Polsri', '2026-05-21 08:17:28');
+INSERT INTO `galeri` (`id`, `judul`, `gambar`, `deskripsi`, `created_at`) VALUES ('7', 'Laboratorium Komputer MI', 'galeri7.jpg', 'Fasilitas laboratorium komputer modern untuk menunjang pembelajaran', '2026-05-21 08:17:28');
+INSERT INTO `galeri` (`id`, `judul`, `gambar`, `deskripsi`, `created_at`) VALUES ('8', 'Penerimaan Mahasiswa Baru 2025', 'galeri8.jpg', 'Proses orientasi dan penerimaan mahasiswa baru jurusan MI tahun 2025', '2026-05-21 08:17:28');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `kunjungan`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `kunjungan`;
+CREATE TABLE `kunjungan` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(45) NOT NULL,
+  `tanggal` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_visit` (`ip_address`,`tanggal`)
+) ENGINE=InnoDB AUTO_INCREMENT=436 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `kunjungan`
+-- ----------------------------------------------------
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('1', '192.168.1.7', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('2', '192.168.1.105', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('3', '192.168.1.66', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('4', '192.168.1.61', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('5', '192.168.1.156', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('6', '192.168.1.15', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('7', '192.168.1.204', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('8', '192.168.1.40', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('9', '192.168.1.136', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('10', '192.168.1.26', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('11', '192.168.1.108', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('12', '192.168.1.102', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('13', '192.168.1.177', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('14', '192.168.1.215', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('16', '192.168.1.121', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('17', '192.168.1.147', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('18', '192.168.1.63', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('20', '192.168.1.221', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('21', '192.168.1.43', '2026-06-11', '2026-06-11 10:13:20');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('22', '192.168.1.140', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('23', '192.168.1.24', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('24', '192.168.1.49', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('25', '192.168.1.6', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('26', '192.168.1.144', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('27', '192.168.1.162', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('29', '192.168.1.18', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('30', '192.168.1.27', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('32', '192.168.1.167', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('33', '192.168.1.75', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('34', '192.168.1.220', '2026-06-11', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('35', '192.168.1.170', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('36', '192.168.1.197', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('37', '192.168.1.228', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('38', '192.168.1.128', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('39', '192.168.1.69', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('40', '192.168.1.213', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('41', '192.168.1.246', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('42', '192.168.1.3', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('43', '192.168.1.201', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('44', '192.168.1.121', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('45', '192.168.1.226', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('46', '192.168.1.94', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('47', '192.168.1.254', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('48', '192.168.1.186', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('49', '192.168.1.169', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('50', '192.168.1.219', '2026-06-10', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('51', '192.168.1.152', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('52', '192.168.1.137', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('53', '192.168.1.74', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('54', '192.168.1.144', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('55', '192.168.1.19', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('56', '192.168.1.30', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('57', '192.168.1.213', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('58', '192.168.1.169', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('59', '192.168.1.221', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('60', '192.168.1.191', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('61', '192.168.1.140', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('62', '192.168.1.198', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('63', '192.168.1.190', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('64', '192.168.1.162', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('65', '192.168.1.33', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('66', '192.168.1.212', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('67', '192.168.1.196', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('68', '192.168.1.1', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('69', '192.168.1.167', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('70', '192.168.1.65', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('71', '192.168.1.136', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('72', '192.168.1.12', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('73', '192.168.1.48', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('74', '192.168.1.99', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('75', '192.168.1.127', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('76', '192.168.1.5', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('77', '192.168.1.31', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('78', '192.168.1.176', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('79', '192.168.1.79', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('80', '192.168.1.110', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('81', '192.168.1.237', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('82', '192.168.1.254', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('83', '192.168.1.141', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('84', '192.168.1.98', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('85', '192.168.1.146', '2026-06-09', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('86', '192.168.1.66', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('87', '192.168.1.208', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('88', '192.168.1.31', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('89', '192.168.1.103', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('90', '192.168.1.48', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('91', '192.168.1.187', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('92', '192.168.1.193', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('93', '192.168.1.248', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('94', '192.168.1.3', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('95', '192.168.1.164', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('96', '192.168.1.234', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('97', '192.168.1.121', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('98', '192.168.1.174', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('99', '192.168.1.145', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('100', '192.168.1.90', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('101', '192.168.1.75', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('102', '192.168.1.69', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('103', '192.168.1.199', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('104', '192.168.1.222', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('105', '192.168.1.113', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('106', '192.168.1.68', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('107', '192.168.1.152', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('108', '192.168.1.212', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('109', '192.168.1.56', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('110', '192.168.1.242', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('112', '192.168.1.171', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('113', '192.168.1.237', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('114', '192.168.1.115', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('115', '192.168.1.73', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('116', '192.168.1.229', '2026-06-08', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('117', '192.168.1.141', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('118', '192.168.1.124', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('119', '192.168.1.198', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('120', '192.168.1.56', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('121', '192.168.1.248', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('122', '192.168.1.13', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('123', '192.168.1.89', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('124', '192.168.1.176', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('125', '192.168.1.100', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('126', '192.168.1.68', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('127', '192.168.1.182', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('128', '192.168.1.241', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('129', '192.168.1.27', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('130', '192.168.1.177', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('131', '192.168.1.245', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('132', '192.168.1.140', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('133', '192.168.1.203', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('134', '192.168.1.51', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('135', '192.168.1.135', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('136', '192.168.1.98', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('137', '192.168.1.52', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('138', '192.168.1.220', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('139', '192.168.1.227', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('140', '192.168.1.80', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('142', '192.168.1.152', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('143', '192.168.1.120', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('144', '192.168.1.217', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('146', '192.168.1.144', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('147', '192.168.1.134', '2026-06-07', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('148', '192.168.1.239', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('149', '192.168.1.128', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('150', '192.168.1.1', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('151', '192.168.1.196', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('152', '192.168.1.39', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('153', '192.168.1.53', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('154', '192.168.1.181', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('155', '192.168.1.123', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('156', '192.168.1.233', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('157', '192.168.1.98', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('158', '192.168.1.112', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('159', '192.168.1.198', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('160', '192.168.1.59', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('161', '192.168.1.215', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('162', '192.168.1.110', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('164', '192.168.1.94', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('165', '192.168.1.126', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('166', '192.168.1.166', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('167', '192.168.1.149', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('168', '192.168.1.205', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('169', '192.168.1.207', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('170', '192.168.1.225', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('171', '192.168.1.12', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('172', '192.168.1.164', '2026-06-06', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('173', '192.168.1.176', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('174', '192.168.1.162', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('175', '192.168.1.242', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('176', '192.168.1.49', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('177', '192.168.1.174', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('178', '192.168.1.131', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('179', '192.168.1.35', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('180', '192.168.1.151', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('181', '192.168.1.156', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('182', '192.168.1.220', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('183', '192.168.1.60', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('185', '192.168.1.83', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('186', '192.168.1.3', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('187', '192.168.1.245', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('188', '192.168.1.17', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('189', '192.168.1.206', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('190', '192.168.1.158', '2026-06-05', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('191', '192.168.1.144', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('192', '192.168.1.232', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('193', '192.168.1.173', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('194', '192.168.1.72', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('195', '192.168.1.41', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('196', '192.168.1.193', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('197', '192.168.1.240', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('198', '192.168.1.225', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('199', '192.168.1.66', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('200', '192.168.1.132', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('201', '192.168.1.133', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('202', '192.168.1.113', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('203', '192.168.1.150', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('205', '192.168.1.5', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('206', '192.168.1.61', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('207', '192.168.1.110', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('208', '192.168.1.217', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('209', '192.168.1.238', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('210', '192.168.1.46', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('211', '192.168.1.157', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('212', '192.168.1.248', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('213', '192.168.1.201', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('215', '192.168.1.154', '2026-06-04', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('217', '192.168.1.234', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('218', '192.168.1.141', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('219', '192.168.1.125', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('220', '192.168.1.168', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('222', '192.168.1.128', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('223', '192.168.1.178', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('224', '192.168.1.196', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('225', '192.168.1.253', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('226', '192.168.1.122', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('227', '192.168.1.108', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('228', '192.168.1.224', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('229', '192.168.1.245', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('230', '192.168.1.186', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('231', '192.168.1.47', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('232', '192.168.1.58', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('234', '192.168.1.188', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('235', '192.168.1.98', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('236', '192.168.1.147', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('238', '192.168.1.92', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('239', '192.168.1.45', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('240', '192.168.1.44', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('241', '192.168.1.216', '2026-06-03', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('243', '192.168.1.111', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('244', '192.168.1.136', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('245', '192.168.1.90', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('246', '192.168.1.170', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('247', '192.168.1.153', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('248', '192.168.1.18', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('249', '192.168.1.73', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('250', '192.168.1.220', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('251', '192.168.1.234', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('252', '192.168.1.167', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('253', '192.168.1.17', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('254', '192.168.1.128', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('255', '192.168.1.75', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('256', '192.168.1.133', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('257', '192.168.1.175', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('258', '192.168.1.112', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('259', '192.168.1.80', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('260', '192.168.1.19', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('261', '192.168.1.116', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('262', '192.168.1.163', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('264', '192.168.1.241', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('265', '192.168.1.31', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('266', '192.168.1.114', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('267', '192.168.1.157', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('268', '192.168.1.23', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('269', '192.168.1.156', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('270', '192.168.1.162', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('271', '192.168.1.213', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('272', '192.168.1.67', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('273', '192.168.1.60', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('274', '192.168.1.66', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('275', '192.168.1.43', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('276', '192.168.1.171', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('277', '192.168.1.210', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('278', '192.168.1.152', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('279', '192.168.1.168', '2026-06-02', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('280', '192.168.1.220', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('281', '192.168.1.48', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('282', '192.168.1.138', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('283', '192.168.1.209', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('284', '192.168.1.81', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('285', '192.168.1.142', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('286', '192.168.1.118', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('287', '192.168.1.117', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('288', '192.168.1.51', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('289', '192.168.1.109', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('290', '192.168.1.28', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('291', '192.168.1.145', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('292', '192.168.1.245', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('293', '192.168.1.35', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('294', '192.168.1.84', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('295', '192.168.1.63', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('296', '192.168.1.186', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('297', '192.168.1.21', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('298', '192.168.1.227', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('299', '192.168.1.222', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('300', '192.168.1.158', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('302', '192.168.1.31', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('303', '192.168.1.47', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('304', '192.168.1.159', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('305', '192.168.1.132', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('306', '192.168.1.7', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('308', '192.168.1.91', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('309', '192.168.1.34', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('310', '192.168.1.212', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('311', '192.168.1.74', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('313', '192.168.1.167', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('314', '192.168.1.154', '2026-06-01', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('316', '192.168.1.116', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('317', '192.168.1.126', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('318', '192.168.1.43', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('319', '192.168.1.197', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('320', '192.168.1.57', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('321', '192.168.1.245', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('322', '192.168.1.99', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('323', '192.168.1.3', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('324', '192.168.1.174', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('325', '192.168.1.152', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('326', '192.168.1.95', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('327', '192.168.1.21', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('328', '192.168.1.31', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('329', '192.168.1.224', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('330', '192.168.1.191', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('331', '192.168.1.109', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('332', '192.168.1.92', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('333', '192.168.1.49', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('334', '192.168.1.141', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('335', '192.168.1.157', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('336', '192.168.1.132', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('337', '192.168.1.16', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('338', '192.168.1.207', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('339', '192.168.1.123', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('340', '192.168.1.156', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('341', '192.168.1.104', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('342', '192.168.1.81', '2026-05-31', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('343', '192.168.1.230', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('344', '192.168.1.27', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('345', '192.168.1.137', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('346', '192.168.1.90', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('347', '192.168.1.203', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('348', '192.168.1.241', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('349', '192.168.1.1', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('350', '192.168.1.141', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('351', '192.168.1.254', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('352', '192.168.1.149', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('353', '192.168.1.189', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('354', '192.168.1.247', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('355', '192.168.1.191', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('356', '192.168.1.212', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('357', '192.168.1.176', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('358', '192.168.1.23', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('359', '192.168.1.128', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('360', '192.168.1.226', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('361', '192.168.1.77', '2026-05-30', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('362', '192.168.1.232', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('363', '192.168.1.28', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('364', '192.168.1.214', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('365', '192.168.1.185', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('366', '192.168.1.3', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('367', '192.168.1.104', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('368', '192.168.1.148', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('369', '192.168.1.132', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('370', '192.168.1.231', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('371', '192.168.1.71', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('372', '192.168.1.20', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('374', '192.168.1.210', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('375', '192.168.1.22', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('376', '192.168.1.7', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('377', '192.168.1.124', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('378', '192.168.1.213', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('379', '192.168.1.121', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('380', '192.168.1.75', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('381', '192.168.1.87', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('382', '192.168.1.109', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('383', '192.168.1.245', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('384', '192.168.1.105', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('385', '192.168.1.90', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('386', '192.168.1.150', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('387', '192.168.1.93', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('388', '192.168.1.251', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('389', '192.168.1.33', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('390', '192.168.1.196', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('391', '192.168.1.17', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('392', '192.168.1.236', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('393', '192.168.1.41', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('394', '192.168.1.78', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('395', '192.168.1.34', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('396', '192.168.1.86', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('397', '192.168.1.12', '2026-05-29', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('398', '192.168.1.29', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('399', '192.168.1.114', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('400', '192.168.1.12', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('401', '192.168.1.14', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('402', '192.168.1.153', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('403', '192.168.1.117', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('404', '192.168.1.97', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('405', '192.168.1.140', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('406', '192.168.1.251', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('407', '192.168.1.238', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('408', '192.168.1.176', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('409', '192.168.1.63', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('410', '192.168.1.210', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('411', '192.168.1.218', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('412', '192.168.1.227', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('414', '192.168.1.138', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('415', '192.168.1.183', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('416', '192.168.1.215', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('417', '192.168.1.191', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('418', '192.168.1.41', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('420', '192.168.1.68', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('421', '192.168.1.27', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('422', '192.168.1.132', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('423', '192.168.1.100', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('424', '192.168.1.95', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('425', '192.168.1.57', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('427', '192.168.1.216', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('428', '192.168.1.24', '2026-05-28', '2026-06-11 10:13:21');
+INSERT INTO `kunjungan` (`id`, `ip_address`, `tanggal`, `created_at`) VALUES ('429', '::1', '2026-06-11', '2026-06-11 10:17:32');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `log_aktivitas`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `log_aktivitas`;
+CREATE TABLE `log_aktivitas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `admin_user` varchar(100) NOT NULL,
+  `aksi` varchar(100) NOT NULL,
+  `rincian` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `log_aktivitas`
+-- ----------------------------------------------------
+-- (No data in this table)
+
+
+-- ----------------------------------------------------
+-- Table structure for table `mahasiswa_prestasi`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `mahasiswa_prestasi`;
+CREATE TABLE `mahasiswa_prestasi` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nama` varchar(150) NOT NULL,
+  `nim` varchar(20) NOT NULL,
+  `prestasi` varchar(255) NOT NULL,
+  `tahun` year NOT NULL,
+  `foto` varchar(255) DEFAULT 'default-mahasiswa.jpg',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `mahasiswa_prestasi`
+-- ----------------------------------------------------
+INSERT INTO `mahasiswa_prestasi` (`id`, `nama`, `nim`, `prestasi`, `tahun`, `foto`, `created_at`) VALUES ('1', 'Ahmad Fauzi Rahman', '062230700001', 'Juara 1 Hackathon Nasional Kemkominfo 2025', '2025', 'mhs1.jpg', '2026-05-21 08:17:28');
+INSERT INTO `mahasiswa_prestasi` (`id`, `nama`, `nim`, `prestasi`, `tahun`, `foto`, `created_at`) VALUES ('2', 'Siti Nurhaliza', '062230700015', 'Best Paper Award — Seminar Nasional APTISI 2024', '2024', 'mhs2.jpg', '2026-05-21 08:17:28');
+INSERT INTO `mahasiswa_prestasi` (`id`, `nama`, `nim`, `prestasi`, `tahun`, `foto`, `created_at`) VALUES ('3', 'Budi Santoso', '062230700023', 'Juara 2 Lomba Web Design Tingkat Sumatera 2024', '2024', 'mhs3.jpg', '2026-05-21 08:17:28');
+INSERT INTO `mahasiswa_prestasi` (`id`, `nama`, `nim`, `prestasi`, `tahun`, `foto`, `created_at`) VALUES ('4', 'Dewi Anggraini', '062220700008', 'Penerima Beasiswa Unggulan Kemendikbud 2024', '2024', 'mhs4.jpg', '2026-05-21 08:17:28');
+INSERT INTO `mahasiswa_prestasi` (`id`, `nama`, `nim`, `prestasi`, `tahun`, `foto`, `created_at`) VALUES ('5', 'Rizky Pratama', '062220700019', 'Juara 1 Business Plan Competition Regional Sumatera 2025', '2025', 'mhs5.jpg', '2026-05-21 08:17:28');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `memo_catatan`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `memo_catatan`;
+CREATE TABLE `memo_catatan` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `isi` text NOT NULL,
+  `warna` varchar(20) DEFAULT 'yellow',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `memo_catatan`
+-- ----------------------------------------------------
+INSERT INTO `memo_catatan` (`id`, `isi`, `warna`, `created_at`) VALUES ('1', 'Selamat datang di Panel Admin! Tulis catatan/memo harian Anda di sini.', 'yellow', '2026-06-11 09:56:42');
+INSERT INTO `memo_catatan` (`id`, `isi`, `warna`, `created_at`) VALUES ('2', 'Jangan lupa untuk memperbarui berita pengumuman jurusan setiap hari Senin.', 'blue', '2026-06-11 09:56:42');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `pengaturan`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `pengaturan`;
+CREATE TABLE `pengaturan` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `kunci` varchar(100) NOT NULL,
+  `nilai` text,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `kunci` (`kunci`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `pengaturan`
+-- ----------------------------------------------------
+INSERT INTO `pengaturan` (`id`, `kunci`, `nilai`) VALUES ('1', 'email', 'mi@polsri.ac.id');
+INSERT INTO `pengaturan` (`id`, `kunci`, `nilai`) VALUES ('2', 'telepon', '0711 321234');
+INSERT INTO `pengaturan` (`id`, `kunci`, `nilai`) VALUES ('3', 'alamat', 'Jl. Sungai Sahang No.3654, Lorok Pakjo, Kec. Ilir Bar. I, Palembang 30151');
+INSERT INTO `pengaturan` (`id`, `kunci`, `nilai`) VALUES ('4', 'facebook', '#');
+INSERT INTO `pengaturan` (`id`, `kunci`, `nilai`) VALUES ('5', 'instagram', '#');
+INSERT INTO `pengaturan` (`id`, `kunci`, `nilai`) VALUES ('6', 'youtube', '#');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `pengumuman`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `pengumuman`;
+CREATE TABLE `pengumuman` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `judul` varchar(255) NOT NULL,
+  `kategori` varchar(100) DEFAULT 'Akademik',
+  `tanggal` date NOT NULL,
+  `link_info` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `pengumuman`
+-- ----------------------------------------------------
+INSERT INTO `pengumuman` (`id`, `judul`, `kategori`, `tanggal`, `link_info`, `created_at`) VALUES ('1', 'Pendaftaran PKL Tahun Akademik 2026/2027', 'Akademik', '2026-05-25', '', '2026-06-11 10:13:20');
+INSERT INTO `pengumuman` (`id`, `judul`, `kategori`, `tanggal`, `link_info`, `created_at`) VALUES ('2', 'Ujian Akhir Semester (UAS) Genap', 'Ujian', '2026-06-10', '', '2026-06-11 10:13:20');
+INSERT INTO `pengumuman` (`id`, `judul`, `kategori`, `tanggal`, `link_info`, `created_at`) VALUES ('3', 'Pelaksanaan Yudisium Tahap I', 'Kelulusan', '2026-07-18', '', '2026-06-11 10:13:20');
+INSERT INTO `pengumuman` (`id`, `judul`, `kategori`, `tanggal`, `link_info`, `created_at`) VALUES ('4', 'Penerimaan Mahasiswa Baru Mandiri', 'PMB', '2026-08-12', '', '2026-06-11 10:13:20');
+
+
+-- ----------------------------------------------------
+-- Table structure for table `pesan_kontak`
+-- ----------------------------------------------------
+DROP TABLE IF EXISTS `pesan_kontak`;
+CREATE TABLE `pesan_kontak` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nama` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `pesan` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_read` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------
+-- Dumping data for table `pesan_kontak`
+-- ----------------------------------------------------
+INSERT INTO `pesan_kontak` (`id`, `nama`, `email`, `pesan`, `created_at`, `is_read`) VALUES ('1', 'uwdb', 'jzabJ@gmail.com', 'fegfywwjwj', '2026-06-11 08:48:25', '0');
+
+
+SET FOREIGN_KEY_CHECKS=1;

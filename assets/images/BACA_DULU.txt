@@ -1,0 +1,51 @@
+============================================
+PANDUAN FOLDER IMAGES — MI Polsri
+============================================
+
+Letakkan file gambar berikut di folder ini:
+
+[WAJIB - Download dari website asli]
+✓ mi.png           → Logo MI Polsri
+  URL: https://manajemeninformatika.polsri.ac.id/mi.png
+
+✓ Hero-1.jpeg      → Gambar hero section
+  URL: https://manajemeninformatika.polsri.ac.id/Hero-1.jpeg
+
+[FOTO DOSEN - Download dari /id/dosen]
+Nama file sesuai kolom 'foto' di database:
+✓ sony-oktapriandi.png      (Ketua Jurusan)
+✓ leni-novianti.png         (D4)
+✓ meivi-kusnandar.png       (D4)
+✓ rika-sadariawati.png      (D4)
+✓ desi-apriyanty.png        (D4)
+✓ hetty-meileni.png         (D4)
+✓ indri-ariyanti.png        (D4)
+✓ nita-novita.png           (D4)
+✓ aris-ganiardi.png         (D4)
+✓ andre-mariza.png          (D4)
+✓ ayu-octarina.png          (D4)
+✓ febie-elfaladonna.png     (D4)
+✓ ridwan-effendi.png        (D3)
+✓ zulkarnaini.png           (D3)
+✓ indra-satriadi.png        (D3)
+✓ devi-sartika.png          (D3)
+✓ dewi-irmawati.png         (D3)
+✓ deri-darfin.png           (D3)
+✓ ienda-meiriska.png        (D3)
+✓ robinson.png              (D3)
+✓ henny-madora.png          (D3)
+✓ ida-wahyuningrum.png      (D3)
+✓ muhammad-noval.png        (D3)
+✓ yusniarti.png             (D3)
+✓ desy-iba.png              (D3)
+✓ irma-salamah.png          (D3)
+
+[BERITA & GALERI - Bisa pakai foto sendiri]
+✓ berita1.jpg, berita2.jpg
+✓ artikel1.jpg, artikel2.jpg
+✓ galeri1.jpg ~ galeri8.jpg
+✓ mhs1.jpg ~ mhs5.jpg
+
+CATATAN: Jika foto tidak ada, website tetap berjalan
+dengan tampilan icon default (tidak error).
+============================================

@@ -1,0 +1,16 @@
+# Options -Indexes
+
+RewriteEngine On
+# RewriteBase /project-mi/
+
+# Route berita detail
+RewriteRule ^berita_detail/([a-z0-9\-]+)\.php$ berita_detail/index.php [L,QSA]
+
+# Block akses file sensitif
+<FilesMatch "\.(sql|log|env|htpasswd)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block akses langsung ke includes
+RewriteRule ^includes/ - [F,L]
